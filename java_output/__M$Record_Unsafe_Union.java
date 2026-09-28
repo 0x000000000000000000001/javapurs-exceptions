@@ -12,5 +12,6 @@ public class __M$Record_Unsafe_Union {
         };
 
 
-public static final Object unsafeUnion = (java.util.function.Function<Object, Object>) (__local_var_0_i0) -> { return (java.util.function.Function<Object, Object>) (__local_var_1_i1) -> { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Record_Unsafe_Union.unsafeUnionFn)).apply(__local_var_0_i0))).apply(__local_var_1_i1); }; };
+public static final Object unsafeUnion = __init$unsafeUnion();
+    private static Object __init$unsafeUnion() { return (java.util.function.Function<Object, Object>) (__local_var_0_i0) -> { return (java.util.function.Function<Object, Object>) (__local_var_1_i1) -> { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Record_Unsafe_Union.unsafeUnionFn)).apply(__local_var_0_i0))).apply(__local_var_1_i1); }; }; }
 }

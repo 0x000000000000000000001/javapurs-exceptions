@@ -34,5 +34,6 @@ public class __M$Foreign_Object_ST {
             };
 
 
-public static final Object peek = ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Foreign_Object_ST.peekImpl)).apply(__M$Data_Maybe.Just))).apply(__M$Data_Maybe.__singleton$Nothing.value);
+public static final Object peek = __init$peek();
+    private static Object __init$peek() { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Foreign_Object_ST.peekImpl)).apply(__M$Data_Maybe.Just))).apply(__M$Data_Maybe.__singleton$Nothing.value); }
 }
