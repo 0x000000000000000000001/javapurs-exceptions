@@ -2,16 +2,36 @@ public class __M$Foreign {
     public static final Object FFI_STUB = new java.util.function.Function<Object, Object>() {
         public Object apply(Object arg) { throw new UnsupportedOperationException("Missing Java FFI in Foreign"); }
     };
-    public static Object isArray = FFI_STUB;
-    public static Object isArray(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.isArray"); }
-    public static Object isNull = FFI_STUB;
-    public static Object isNull(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.isNull"); }
-    public static Object isUndefined = FFI_STUB;
-    public static Object isUndefined(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.isUndefined"); }
-    public static Object tagOf = FFI_STUB;
-    public static Object tagOf(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.tagOf"); }
-    public static Object typeOf = FFI_STUB;
-    public static Object typeOf(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.typeOf"); }
+    // FFI provided by ../javapurs-foreign/src/Foreign.java
+    // Port of Foreign.js. JavaScript's typeof/tagOf over this backend's values:
+    // strings, boxed numbers, booleans, functions (Function or Supplier),
+    // Object[] arrays and maps/records.
+    public static Object typeOf = (java.util.function.Function<Object, Object>) (value) -> {
+        if (value instanceof String) return "string";
+        if (value instanceof Number) return "number";
+        if (value instanceof Boolean) return "boolean";
+        if (value instanceof java.util.function.Function) return "function";
+        if (value instanceof java.util.function.Supplier) return "function";
+        return "object";
+    };
+
+    public static Object tagOf = (java.util.function.Function<Object, Object>) (value) -> {
+        if (value == null) return "Null";
+        if (value instanceof String) return "String";
+        if (value instanceof Number) return "Number";
+        if (value instanceof Boolean) return "Boolean";
+        if (value instanceof Object[]) return "Array";
+        if (value instanceof java.util.function.Function) return "Function";
+        if (value instanceof java.util.function.Supplier) return "Function";
+        return "Object";
+    };
+
+    public static Object isNull = (java.util.function.Function<Object, Object>) (value) -> value == null;
+
+    public static Object isUndefined = (java.util.function.Function<Object, Object>) (value) -> false;
+
+    public static Object isArray = (java.util.function.Function<Object, Object>) (value) -> value instanceof Object[];
+
 
 public static final class ForeignError {
             public final Object value0;

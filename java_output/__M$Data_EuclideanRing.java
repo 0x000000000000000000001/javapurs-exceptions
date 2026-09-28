@@ -4,7 +4,7 @@ public class __M$Data_EuclideanRing {
     };
     // FFI provided by ../javapurs-prelude/src/Data/EuclideanRing.java
     public static Object intDegree = (java.util.function.Function<Object, Object>) (x) ->
-        Math.min(Math.abs((long) ((Integer) x)), 2147483647L);
+        (int) Math.min(Math.abs((long) ((Integer) x)), 2147483647L);
     public static Object intDiv = (java.util.function.Function<Object, Object>) (x) -> (java.util.function.Function<Object, Object>) (y) -> {
         int xInt = (Integer) x;
         int yInt = (Integer) y;

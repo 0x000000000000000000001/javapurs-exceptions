@@ -2,40 +2,131 @@ public class __M$Data_Array_ST {
     public static final Object FFI_STUB = new java.util.function.Function<Object, Object>() {
         public Object apply(Object arg) { throw new UnsupportedOperationException("Missing Java FFI in Data.Array.ST"); }
     };
-    public static Object cloneImpl = FFI_STUB;
-    public static Object cloneImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.cloneImpl"); }
-    public static Object freezeImpl = FFI_STUB;
-    public static Object freezeImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.freezeImpl"); }
-    public static Object lengthImpl = FFI_STUB;
-    public static Object lengthImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.lengthImpl"); }
-    public static Object $new = FFI_STUB;
-    public static Object $new(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.new"); }
-    public static Object peekImpl = FFI_STUB;
-    public static Object peekImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.peekImpl"); }
-    public static Object pokeImpl = FFI_STUB;
-    public static Object pokeImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.pokeImpl"); }
-    public static Object popImpl = FFI_STUB;
-    public static Object popImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.popImpl"); }
-    public static Object pushAllImpl = FFI_STUB;
-    public static Object pushAllImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.pushAllImpl"); }
-    public static Object pushImpl = FFI_STUB;
-    public static Object pushImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.pushImpl"); }
-    public static Object shiftImpl = FFI_STUB;
-    public static Object shiftImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.shiftImpl"); }
-    public static Object sortByImpl = FFI_STUB;
-    public static Object sortByImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.sortByImpl"); }
-    public static Object spliceImpl = FFI_STUB;
-    public static Object spliceImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.spliceImpl"); }
-    public static Object thawImpl = FFI_STUB;
-    public static Object thawImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.thawImpl"); }
-    public static Object toAssocArrayImpl = FFI_STUB;
-    public static Object toAssocArrayImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.toAssocArrayImpl"); }
-    public static Object unsafeFreezeImpl = FFI_STUB;
-    public static Object unsafeFreezeImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.unsafeFreezeImpl"); }
-    public static Object unsafeThawImpl = FFI_STUB;
-    public static Object unsafeThawImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.unsafeThawImpl"); }
-    public static Object unshiftAllImpl = FFI_STUB;
-    public static Object unshiftAllImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Data.Array.ST.unshiftAllImpl"); }
+    // FFI provided by ../javapurs-arrays/src/Data/Array/ST.java
+    // Port of Data/Array/ST.js. An STArray is an ArrayList; ST values are
+    // Suppliers, the convention the other ST ports use.
+    public static Object $new = (java.util.function.Supplier<Object>) () -> new java.util.ArrayList<Object>();
+
+    public static Object unsafeFreezeImpl = (java.util.function.Function<Object, Object>) (st) ->
+        (java.util.function.Supplier<Object>) () -> ((java.util.List<Object>) st).toArray(new Object[0]);
+
+    public static Object unsafeThawImpl = (java.util.function.Function<Object, Object>) (arr) ->
+        (java.util.function.Supplier<Object>) () -> new java.util.ArrayList<>(java.util.Arrays.asList((Object[]) arr));
+
+    public static Object thawImpl = (java.util.function.Function<Object, Object>) (arr) ->
+        (java.util.function.Supplier<Object>) () -> new java.util.ArrayList<>(java.util.Arrays.asList((Object[]) arr));
+
+    public static Object freezeImpl = (java.util.function.Function<Object, Object>) (st) ->
+        (java.util.function.Supplier<Object>) () -> ((java.util.List<Object>) st).toArray(new Object[0]);
+
+    public static Object cloneImpl = (java.util.function.Function<Object, Object>) (st) ->
+        (java.util.function.Supplier<Object>) () -> new java.util.ArrayList<>((java.util.List<Object>) st);
+
+    public static Object peekImpl = (java.util.function.Function<Object, Object>) (just) ->
+        (java.util.function.Function<Object, Object>) (nothing) ->
+        (java.util.function.Function<Object, Object>) (i) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                int index = ((Number) i).intValue();
+                return index >= 0 && index < list.size()
+                    ? ((java.util.function.Function<Object, Object>) just).apply(list.get(index))
+                    : nothing;
+            };
+
+    public static Object pokeImpl = (java.util.function.Function<Object, Object>) (i) ->
+        (java.util.function.Function<Object, Object>) (a) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                int index = ((Number) i).intValue();
+                if (index >= 0 && index < list.size()) { list.set(index, a); return true; }
+                return false;
+            };
+
+    public static Object lengthImpl = (java.util.function.Function<Object, Object>) (xs) ->
+        (java.util.function.Supplier<Object>) () -> ((java.util.List<Object>) xs).size();
+
+    public static Object popImpl = (java.util.function.Function<Object, Object>) (just) ->
+        (java.util.function.Function<Object, Object>) (nothing) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                return list.isEmpty() ? nothing : ((java.util.function.Function<Object, Object>) just).apply(list.remove(list.size() - 1));
+            };
+
+    public static Object shiftImpl = (java.util.function.Function<Object, Object>) (just) ->
+        (java.util.function.Function<Object, Object>) (nothing) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                return list.isEmpty() ? nothing : ((java.util.function.Function<Object, Object>) just).apply(list.remove(0));
+            };
+
+    public static Object pushImpl = (java.util.function.Function<Object, Object>) (a) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                list.add(a);
+                return list.size();
+            };
+
+    public static Object pushAllImpl = (java.util.function.Function<Object, Object>) (as) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                for (Object item : (Object[]) as) list.add(item);
+                return list.size();
+            };
+
+    public static Object unshiftAllImpl = (java.util.function.Function<Object, Object>) (as) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                Object[] items = (Object[]) as;
+                for (int index = items.length - 1; index >= 0; index--) list.add(0, items[index]);
+                return list.size();
+            };
+
+    public static Object spliceImpl = (java.util.function.Function<Object, Object>) (i) ->
+        (java.util.function.Function<Object, Object>) (howMany) ->
+        (java.util.function.Function<Object, Object>) (bs) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                int start = Math.max(0, Math.min(((Number) i).intValue(), list.size()));
+                int count = Math.max(0, Math.min(((Number) howMany).intValue(), list.size() - start));
+                java.util.List<Object> removed = new java.util.ArrayList<>();
+                for (int index = 0; index < count; index++) removed.add(list.remove(start));
+                Object[] items = (Object[]) bs;
+                for (int index = 0; index < items.length; index++) list.add(start + index, items[index]);
+                return removed.toArray(new Object[0]);
+            };
+
+    public static Object sortByImpl = (java.util.function.Function<Object, Object>) (compare) ->
+        (java.util.function.Function<Object, Object>) (fromOrdering) ->
+        (java.util.function.Function<Object, Object>) (xs) ->
+            (java.util.function.Supplier<Object>) () -> {
+                java.util.List<Object> list = (java.util.List<Object>) xs;
+                list.sort((java.util.Comparator<Object>) (a, b) -> ((Number)
+                    ((java.util.function.Function<Object, Object>) fromOrdering).apply(
+                        ((java.util.function.Function<Object, Object>) ((java.util.function.Function<Object, Object>) compare).apply(a)).apply(b))).intValue());
+                return list;
+            };
+
+    public static Object toAssocArrayImpl = (java.util.function.Function<Object, Object>) (xs) ->
+        (java.util.function.Supplier<Object>) () -> {
+            java.util.List<Object> list = (java.util.List<Object>) xs;
+            Object[] out = new Object[list.size()];
+            for (int index = 0; index < list.size(); index++) {
+                java.util.Map<String, Object> assoc = new java.util.LinkedHashMap<>();
+                assoc.put("value", list.get(index));
+                assoc.put("index", index);
+                out[index] = assoc;
+            }
+            return out;
+        };
+
 
 public static final Object unshiftAll = ((java.util.function.Function<Object, Object>) (__M$Control_Monad_ST_Uncurried.runSTFn2)).apply(__M$Data_Array_ST.unshiftAllImpl);
 public static final Object unshift = (java.util.function.Function<Object, Object>) (a_0_i0) -> { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Control_Monad_ST_Uncurried.runSTFn2)).apply(__M$Data_Array_ST.unshiftAllImpl))).apply(new Object[]{a_0_i0}); };

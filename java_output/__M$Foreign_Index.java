@@ -2,12 +2,28 @@ public class __M$Foreign_Index {
     public static final Object FFI_STUB = new java.util.function.Function<Object, Object>() {
         public Object apply(Object arg) { throw new UnsupportedOperationException("Missing Java FFI in Foreign.Index"); }
     };
-    public static Object unsafeHasOwnProperty = FFI_STUB;
-    public static Object unsafeHasOwnProperty(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.Index.unsafeHasOwnProperty"); }
-    public static Object unsafeHasProperty = FFI_STUB;
-    public static Object unsafeHasProperty(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.Index.unsafeHasProperty"); }
-    public static Object unsafeReadPropImpl = FFI_STUB;
-    public static Object unsafeReadPropImpl(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Foreign.Index.unsafeReadPropImpl"); }
+    // FFI provided by ../javapurs-foreign/src/Foreign/Index.java
+    // Port of Foreign/Index.js: records and objects are maps here.
+    public static Object unsafeReadPropImpl = (java.util.function.Function<Object, Object>) (f) ->
+        (java.util.function.Function<Object, Object>) (s) ->
+        (java.util.function.Function<Object, Object>) (key) ->
+        (java.util.function.Function<Object, Object>) (value) -> {
+            if (value == null) return f;
+            if (value instanceof java.util.Map) {
+                Object found = ((java.util.Map<String, Object>) value).get((String) key);
+                return ((java.util.function.Function<Object, Object>) s).apply(found);
+            }
+            return f;
+        };
+
+    public static Object unsafeHasOwnProperty = (java.util.function.Function<Object, Object>) (prop) ->
+        (java.util.function.Function<Object, Object>) (value) ->
+            value instanceof java.util.Map && ((java.util.Map<String, Object>) value).containsKey((String) prop);
+
+    public static Object unsafeHasProperty = (java.util.function.Function<Object, Object>) (prop) ->
+        (java.util.function.Function<Object, Object>) (value) ->
+            value instanceof java.util.Map && ((java.util.Map<String, Object>) value).containsKey((String) prop);
+
 
 public static final Object unsafeReadProp = (java.util.function.Function<Object, Object>) (dictMonad_0_i0) -> { Object pure_1_i1 = ((java.util.function.Function<Object, Object>) (__M$Control_Applicative.pure)).apply(((java.util.function.Function<Object, Object>) (__M$Control_Monad_Except_Trans.applicativeExceptT)).apply(dictMonad_0_i0)); return (java.util.function.Function<Object, Object>) (k_2_i2) -> { return (java.util.function.Function<Object, Object>) (value_3_i3) -> { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Foreign_Index.unsafeReadPropImpl)).apply(((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Control_Semigroupoid.compose)).apply(__M$Control_Semigroupoid.semigroupoidFn))).apply(((java.util.function.Function<Object, Object>) (__M$Control_Monad_Error_Class.throwError)).apply(((java.util.function.Function<Object, Object>) (__M$Control_Monad_Except_Trans.monadThrowExceptT)).apply(dictMonad_0_i0))))).apply(__M$Data_List_NonEmpty.singleton))).apply(new __M$Foreign.TypeMismatch("object", ((java.util.function.Function<Object, Object>) (__M$Foreign.typeOf)).apply(value_3_i3)))))).apply(pure_1_i1))).apply(k_2_i2))).apply(value_3_i3); }; }; };
 public static final Object readProp = (java.util.function.Function<Object, Object>) (dictMonad_0_i0) -> { return ((java.util.function.Function<Object, Object>) (__M$Foreign_Index.unsafeReadProp)).apply(dictMonad_0_i0); };

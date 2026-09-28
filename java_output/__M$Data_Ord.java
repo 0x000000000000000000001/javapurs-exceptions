@@ -10,7 +10,11 @@ public class __M$Data_Ord {
         } else if (x instanceof Integer && y instanceof Integer) {
             cmp = ((Integer) x).compareTo((Integer) y);
         } else if (x instanceof Double && y instanceof Double) {
-            cmp = ((Double) x).compareTo((Double) y);
+            // JavaScript compares with < and >, so -0.0 equals 0.0 and NaN is
+            // equal to everything; Double.compareTo would order both instead.
+            double left = (Double) x;
+            double right = (Double) y;
+            cmp = left < right ? -1 : left > right ? 1 : 0;
         } else if (x instanceof Boolean && y instanceof Boolean) {
             cmp = ((Boolean) x).compareTo((Boolean) y);
         } else {

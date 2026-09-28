@@ -2,8 +2,11 @@ public class __M$Test_QuickCheck_Gen {
     public static final Object FFI_STUB = new java.util.function.Function<Object, Object>() {
         public Object apply(Object arg) { throw new UnsupportedOperationException("Missing Java FFI in Test.QuickCheck.Gen"); }
     };
-    public static Object float32ToInt32 = FFI_STUB;
-    public static Object float32ToInt32(Object... args) { throw new UnsupportedOperationException("Missing Java FFI: Test.QuickCheck.Gen.float32ToInt32"); }
+    // FFI provided by ../javapurs-quickcheck/src/Test/QuickCheck/Gen.java
+    // Port of Gen.js: single-precision truncation then a bit reinterpretation.
+    public static Object float32ToInt32 = (java.util.function.Function<Object, Object>) (n) ->
+        Float.floatToRawIntBits(((Number) n).floatValue());
+
 
 public static final Object unGen = (java.util.function.Function<Object, Object>) (v_0_i0) -> { return v_0_i0; };
 public static final Object runGen = ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Control_Semigroupoid.compose)).apply(__M$Control_Semigroupoid.semigroupoidFn))).apply(__M$Control_Monad_State.runState))).apply(__M$Test_QuickCheck_Gen.unGen);
