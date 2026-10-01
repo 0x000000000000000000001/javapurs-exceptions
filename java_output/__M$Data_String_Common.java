@@ -60,7 +60,7 @@ public class __M$Data_String_Common {
 
 
 public static final Object $null = __init$$null();
-    private static Object __init$$null() { return (java.util.function.Function<Object, Object>) (s_0_i0) -> { return java.util.Objects.equals(s_0_i0, ""); }; }
+    private static Object __init$$null() { return (java.util.function.Function<Object, Object>) (s_0$r0) -> { return java.util.Objects.equals(s_0$r0, ""); }; }
 public static final Object localeCompare = __init$localeCompare();
     private static Object __init$localeCompare() { return ((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (((java.util.function.Function<Object, Object>) (__M$Data_String_Common._localeCompare)).apply(__M$Data_Ordering.__singleton$LT.value))).apply(__M$Data_Ordering.__singleton$EQ.value))).apply(__M$Data_Ordering.__singleton$GT.value); }
 }
