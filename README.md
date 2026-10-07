@@ -42,3 +42,21 @@ also checks the PureScript APIs and exception identity through Aff and Promise,
 with typed records/Maps and classes/standalone JARs. It additionally requires the
 built backend, Spago and the TAST frontend. The
 [M19 record](../javapurs/docs/testing.md#validation-m19) lists the JVM 17/26 results.
+
+## PureScript suite on Java
+
+With the built neighboring backend, Spago, the TAST frontend and a JDK:
+
+```bash
+./bin/test
+./bin/test --help
+```
+
+The [common port runner](../javapurs/docs/testing.md#port-particulier) copies
+`src/` and `test/` into an isolated workspace, using the rebased `spago.java.yaml`
+and its package set 77.7.0. The synchronous `Test.Main` suite propagates failed
+assertions through the JVM process. Source files, configuration, lockfile and
+existing outputs are preserved. `-c`/`--clean` rebuilds the backend with
+`bin/build`; invalid options fail before preparation. Java release 17 is the
+default; `JAVAPURS_JAVA_RELEASE` and `JAVAPURS_JAVA_RUNTIME` select the target and
+execution JVM. Failed workspaces and phase logs are retained for diagnosis.
